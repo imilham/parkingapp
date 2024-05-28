@@ -12,7 +12,7 @@ import 'package:parking_app/data/data.dart';
 import 'package:parking_app/presentation/screens/home-screen/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class SplashScreen extends StatelessWidget {
                           children: [
                             Flexible(
                               child: Text(
-                                "This is a Car parking app for Smart car parkign station, Here you can find Avalible slot and book your parking slot from any where with you phone",
+                                "This is a Car parking app for Smart car parking station, Here you can find Available slot and book your parking slot from any where with you phone",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 15,
@@ -78,16 +78,16 @@ class SplashScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        collegeLogo,
-                        width: 200,
-                      )
-                    ],
-                  )),
+                  // Expanded(
+                  //     child: Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     Image.asset(
+                  //       collegeLogo,
+                  //       width: 200,
+                  //     )
+                  //   ],
+                  // )),
                 ]),
               ),
             );

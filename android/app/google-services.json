@@ -1,15 +1,16 @@
 {
   "project_info": {
     "project_number": "576808977815",
+    "firebase_url": "https://smartpark-c60bb-default-rtdb.firebaseio.com",
     "project_id": "smartpark-c60bb",
     "storage_bucket": "smartpark-c60bb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:576808977815:android:5bfae960f92152b764f0d2",
+        "mobilesdk_app_id": "1:576808977815:android:1e71aa853c004b7c64f0d2",
         "android_client_info": {
-          "package_name": "com.example.parking_app"
+          "package_name": "com.example.parkingapp"
         }
       },
       "oauth_client": [],

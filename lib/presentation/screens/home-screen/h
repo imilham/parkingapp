@@ -62,3 +62,33 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+ // print("Abc - 1");
+
+    // DatabaseReference databaseReference =
+    //     FirebaseDatabase.instance.reference().child(sensorName);
+
+    // // Subscribe to changes in the database reference
+    // databaseReference.onValue.listen((event) {
+    //   print("Abc - 2");
+
+    //   DataSnapshot dataSnapshot = event.snapshot;
+    //   dynamic sensorValue = dataSnapshot.value;
+
+    //   // Update state based on sensor name
+    //   setState(() {
+    //     if (sensorName == 'SENSOR1') {
+    //       // Assuming SENSOR1 value is boolean
+    //       valueS1 = sensorValue as bool? ??
+    //           false; // Use default value if sensorValue is null
+    //     } else if (sensorName == 'SENSOR2') {
+    //       // Assuming SENSOR2 value is boolean
+    //       valueS2 = sensorValue as bool? ??
+    //           false; // Use default value if sensorValue is null
+    //     }
+    //     print('$sensorName: $sensorValue');
+    //   });
+    // });

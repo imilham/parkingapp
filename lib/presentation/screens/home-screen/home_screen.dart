@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:parking_app/data/models/parking_slot.dart';
-import 'package:parking_app/presentation/constants/colors.dart';
-import 'package:flutter/material.dart';
-import 'package:another_dashed_container/another_dashed_container.dart';
+import 'package:parking_app/presentation/screens/booked_data.dart';
 import 'package:parking_app/presentation/screens/booking_page/booking_page.dart';
 // import 'package:smart_car_parking/pages/booking_page/booking_page.dart';
-import '../../constants/colors.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -29,10 +24,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     // Initialize sensor values
+    // valueS1;
+    // valueS2;
     valueS1 = false;
     valueS2 = false;
 
     readSensorData('SENSOR1');
+
     readSensorData('SENSOR2');
 
     // Read initial sensor values
@@ -52,7 +50,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             Row(
               children: [
                 Container(
@@ -65,20 +63,20 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Slot 01"),
+                      const Text("Slot 01"),
                       // Text('Time: $time'),
                       if (isBooked1 == true)
                         Image.asset("assets/images/car.png"),
                       if (isBooked1 != true)
                         ElevatedButton(
                           onPressed: () {
-                            print(isBooked1);
+                            //print(isBooked1);
 
                             // Handle button press, e.g., navigate to BookingPage
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const BookingPageUI(
+                                builder: (context) => BookingPageUI(
                                   slotId: '01',
                                   slotName: 'Slot 01',
                                 ),
@@ -101,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Slot 02"),
+                      //Text("Slot 02"),
                       // Text('Time: $time'),
                       if (isBooked2 == true)
                         Image.asset("assets/images/car.png"),
@@ -112,20 +110,29 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const BookingPageUI(
+                                builder: (context) => BookingPageUI(
                                   slotId: '02',
                                   slotName: 'Slot 02',
                                 ),
                               ),
                             );
                           },
-                          child: Text('BOOK'),
+                          child: const Text('BOOK'),
                         ),
                     ],
                   ),
                 ),
               ],
             ),
+            const SizedBox(height: 50),
+            SizedBox(
+              width: 200,
+              height: 50,
+              child: ElevatedButton(
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => BookedDataScreen())),
+                  child: const Text('Current Bookings')),
+            )
           ],
         ),
       ),
@@ -133,20 +140,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   void readSensorData(String sensorName) {
-    DatabaseReference databaseReference =
-        // ignore: deprecated_member_use
-        FirebaseDatabase.instance.reference().child(sensorName);
+    //print("Abc - 1");
 
-    databaseReference.onValue.listen((event) {
-      DataSnapshot dataSnapshot = event.snapshot;
-      Object? sensorValue = dataSnapshot.value;
+    String path = 'SENSOR/$sensorName/SENSORVAL';
+
+    DatabaseReference starCountRef = FirebaseDatabase.instance.ref(path);
+    starCountRef.onValue.listen((DatabaseEvent event) {
+      final data = event.snapshot.value;
+
       setState(() {
         if (sensorName == 'SENSOR1') {
-          valueS1 = sensorValue as bool; // Assuming SENSOR1 value is boolean
+          // Assuming SENSOR1 value is boolean
+          valueS1 = data as bool? ??
+              false; // Use default value if sensorValue is null
         } else if (sensorName == 'SENSOR2') {
-          valueS2 = sensorValue as bool; // Assuming SENSOR2 value is boolean
+          // Assuming SENSOR2 value is boolean
+          valueS2 = data as bool? ??
+              false; // Use default value if sensorValue is null
         }
-        print('$sensorName: $sensorValue');
+        //print('$sensorName: $data');
       });
     });
   }

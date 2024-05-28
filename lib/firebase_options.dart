@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,9 +28,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,49 +49,22 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCRnP6Yaj7CcontJpH6pPKsRP1jA4Y4GiA',
-    appId: '1:576808977815:web:0ca6cbe25cb0e2a664f0d2',
-    messagingSenderId: '576808977815',
-    projectId: 'smartpark-c60bb',
-    authDomain: 'smartpark-c60bb.firebaseapp.com',
-    storageBucket: 'smartpark-c60bb.appspot.com',
-    measurementId: 'G-6TWYWMWJBM',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDu0jZ9Avric-UnwftMkUNPScZXQYahKlk',
-    appId: '1:576808977815:android:5bfae960f92152b764f0d2',
+    appId: '1:576808977815:android:1e71aa853c004b7c64f0d2',
     messagingSenderId: '576808977815',
     projectId: 'smartpark-c60bb',
+    databaseURL: 'https://smartpark-c60bb-default-rtdb.firebaseio.com',
     storageBucket: 'smartpark-c60bb.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDWKp6Na6ImGca1gr29mqtvfZxLfMLyOMM',
-    appId: '1:576808977815:ios:7306c338df0517e064f0d2',
+    appId: '1:576808977815:ios:b7d73b72a1611fbf64f0d2',
     messagingSenderId: '576808977815',
     projectId: 'smartpark-c60bb',
+    databaseURL: 'https://smartpark-c60bb-default-rtdb.firebaseio.com',
     storageBucket: 'smartpark-c60bb.appspot.com',
-    iosBundleId: 'com.example.parkingApp',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDWKp6Na6ImGca1gr29mqtvfZxLfMLyOMM',
-    appId: '1:576808977815:ios:7306c338df0517e064f0d2',
-    messagingSenderId: '576808977815',
-    projectId: 'smartpark-c60bb',
-    storageBucket: 'smartpark-c60bb.appspot.com',
-    iosBundleId: 'com.example.parkingApp',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCRnP6Yaj7CcontJpH6pPKsRP1jA4Y4GiA',
-    appId: '1:576808977815:web:d5397bfa82d7932564f0d2',
-    messagingSenderId: '576808977815',
-    projectId: 'smartpark-c60bb',
-    authDomain: 'smartpark-c60bb.firebaseapp.com',
-    storageBucket: 'smartpark-c60bb.appspot.com',
-    measurementId: 'G-BVJPE1Q94N',
+    iosBundleId: 'com.example.parkingapp',
   );
 }

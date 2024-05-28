@@ -36,6 +36,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_bloc:
+  lottie: ^3.1.0
+  intl: ^0.17.0
+  firebase_storage:
+  cloud_firestore:
+  firebase_core: ^2.31.1
+  firebase_database:
 
 
 dev_dependencies:
@@ -48,24 +54,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.2
-  lottie: ^3.1.0
-  another_dashed_container: ^1.0.0
-  intl: ^0.17.0
-  # firebase_core: ^2.4.0
-  firebase_storage: ^11.0.8
-  cloud_firestore_platform_interface: ^5.9.1
-  cloud_firestore: ^4.2.0
-  firebase_auth: ^4.2.1 # Adjust version as needed
-  equatable: ^2.0.5
-  # firebase_database: ^10.5.4
-  firebase_core: ^2.17.0
-  firebase_database: ^10.2.7 
-  # cloud_firestore_platform_interface: ^5.7.7
-
-# dependency_overrides:
-#   firebase_core_platform_interface: 4.5.1
-
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
