@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "576808977815",
+    "project_id": "smartpark-c60bb",
+    "storage_bucket": "smartpark-c60bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576808977815:android:5bfae960f92152b764f0d2",
+        "android_client_info": {
+          "package_name": "com.example.parking_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu0jZ9Avric-UnwftMkUNPScZXQYahKlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

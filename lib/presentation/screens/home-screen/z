@@ -1,0 +1,150 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:parking_app/presentation/constants/colors.dart';
+import 'package:parking_app/presentation/widgets/parking_slot.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+// import 'package:fir';
+// import 'package:smart_car_parking/components/parking_slot.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text("IOT APP"),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.menu,
+            color: Colors.white,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              // Implement action when settings button is pressed
+            },
+          ),
+        ],
+      ),
+      body: const Padding(
+        padding: EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 20),
+              Text(
+                "Parking Slots",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              SizedBox(height: 60),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Text("ENTRY"),
+                      Icon(Icons.keyboard_arrow_down),
+                    ],
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: ParkingSlot(
+                      isBooked: false,
+                      isParked: false,
+                      slotName: "A-1",
+                      slotId: "1",
+                      time: '0.0',
+                    ),
+                  ),
+                  SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: VerticalDivider(
+                      color: blueColor,
+                      thickness: 1,
+                    ),
+                  ),
+                  Expanded(
+                    child: ParkingSlot(
+                      isBooked: true,
+                      isParked: true,
+                      slotName: "A-2",
+                      slotId: "2",
+                      time: '1.5',
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: ParkingSlot(
+                      isBooked: true,
+                      isParked: true,
+                      slotName: "A-1",
+                      slotId: "1",
+                      time: '0.0',
+                    ),
+                  ),
+                  SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: VerticalDivider(
+                      color: blueColor,
+                      thickness: 1,
+                    ),
+                  ),
+                  Expanded(
+                    child: ParkingSlot(
+                      isBooked: false,
+                      isParked: false,
+                      slotName: "A-2",
+                      slotId: "2",
+                      time: '1.5',
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+
+void fetchDataFromFirebase() {
+  DatabaseReference databaseRef = FirebaseDatabase.instance.reference();
+  databaseRef.child('your_data_node').once().then((DataSnapshot snapshot) {
+    // Handle the fetched data
+    if (snapshot.value != null) {
+      // Data exists
+      Object? values = snapshot.value;
+      // Process the data as needed
+      print('Fetched Data: $values');
+    } else {
+      // Data doesn't exist
+      print('No data available');
+    }
+  } as FutureOr Function(DatabaseEvent value)).catchError((error) {
+    // Handle any errors
+    print('Error fetching data: $error');
+  });
+}
+
+}
