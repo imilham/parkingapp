@@ -7,9 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:parking_app/bloc/splash/splash_bloc.dart';
 import 'package:parking_app/bloc/splash/splash_event.dart';
 import 'package:parking_app/bloc/splash/splash_state.dart';
-import 'package:parking_app/data/data.dart';
 // import 'package:parking_app/data/data.dart';
-import 'package:parking_app/presentation/screens/home-screen/home_screen.dart';
+import 'package:parking_app/presentation/screens/stater_one.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -21,8 +20,10 @@ class SplashScreen extends StatelessWidget {
       body: BlocConsumer<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is SplashLoadedState) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const HomePage()));
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const StarterScreenOne()));
           }
         },
         builder: (context, state) {

@@ -104,8 +104,8 @@ class _BookingPageUIState extends State<BookingPageUI> {
                 const SizedBox(height: 20),
                 Container(
                   // width: 100,
-                  width: MediaQuery.of(context).size.width * .75,
-                  height: 60,
+                  width: MediaQuery.of(context).size.width * .90,
+                  height: 100,
                   decoration: BoxDecoration(
                     color: Colors.amber,
                     borderRadius: BorderRadius.circular(10),

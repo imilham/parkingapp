@@ -24,6 +24,7 @@ class _BookedDataScreenState extends State<BookedDataScreen> {
 
   int hourTwo = 0;
   int minuteTwo = 0;
+
   @override
   void initState() {
     super.initState();
@@ -40,28 +41,34 @@ class _BookedDataScreenState extends State<BookedDataScreen> {
       appBar: AppBar(
         title: const Text('Booking Details'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            BookedWidget(
-              hasCar: widget.carOne,
-              slotName: "Slot A",
-              hour: hourOne,
-              minute: minuteOne,
-              uName: uNameOne,
-              vNumber: vehicleNumberOne,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 50),
+                BookedWidget(
+                  hasCar: widget.carOne,
+                  slotName: "Slot A",
+                  hour: hourOne,
+                  minute: minuteOne,
+                  uName: uNameOne,
+                  vNumber: vehicleNumberOne,
+                ),
+                const SizedBox(height: 50),
+                BookedWidget(
+                  hasCar: widget.carTwo,
+                  slotName: "Slot B",
+                  hour: hourTwo,
+                  minute: minuteTwo,
+                  uName: uNameTwo,
+                  vNumber: vehicleNumberTwo,
+                ),
+                const SizedBox(height: 50),
+              ],
             ),
-            const SizedBox(height: 10),
-            BookedWidget(
-              hasCar: widget.carTwo,
-              slotName: "Slot B",
-              hour: hourTwo,
-              minute: minuteTwo,
-              uName: uNameTwo,
-              vNumber: vehicleNumberTwo,
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -85,7 +92,7 @@ class _BookedDataScreenState extends State<BookedDataScreen> {
           widget.carTwo = data as bool? ??
               false; // Use default value if sensorValue is null
         }
-        print('$sensorName: $data');
+        //print('$sensorName: $data');
       });
     });
 
@@ -103,7 +110,7 @@ class _BookedDataScreenState extends State<BookedDataScreen> {
           uNameTwo = data as String? ??
               'no value'; // Use default value if sensorValue is null
         }
-        print('$sensorName: $data');
+        //print('$sensorName: $data');
       });
     });
 
@@ -122,7 +129,7 @@ class _BookedDataScreenState extends State<BookedDataScreen> {
           vehicleNumberTwo = data as String? ??
               'no value'; // Use default value if sensorValue is null
         }
-        print('ddddddd');
+        //print('ddddddd');
       });
     });
 
@@ -141,11 +148,11 @@ class _BookedDataScreenState extends State<BookedDataScreen> {
           minuteTwo =
               data as int? ?? 1; // Use default value if sensorValue is null
         }
-        print('ddddddd');
+        //print('ddddddd');
       });
     });
 
-    String pathHour = 'SENSOR/$sensorName/Hour';
+    String pathHour = 'SENSOR/$sensorName/HOUR';
     DatabaseReference hourRef = FirebaseDatabase.instance.ref(pathHour);
     hourRef.onValue.listen((DatabaseEvent event) {
       final data = event.snapshot.value;
@@ -159,7 +166,7 @@ class _BookedDataScreenState extends State<BookedDataScreen> {
           hourTwo =
               data as int? ?? 0; // Use default value if sensorValue is null
         }
-        print('ddddddd');
+        //print('ddddddd');
       });
     });
   }
